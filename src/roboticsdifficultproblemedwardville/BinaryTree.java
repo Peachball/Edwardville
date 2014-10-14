@@ -22,37 +22,43 @@ public class BinaryTree {
     public void setValue(int position, int value) {
         tree[position][0][0] = value;
     }
-    public int getValue(int position){
+
+    public int getValue(int position) {
         return tree[position][0][0];
     }
-    public int getDistance(int position){
+
+    public int getDistance(int position) {
         return tree[position][0][1];
     }
-    public int findPosition(int value){
-        for(int x = 0;x<tree.length;x++){
-            if(tree[x][0][0]==value){
+
+    public int findPosition(int value) {
+        for (int x = 0; x < tree.length; x++) {
+            if (tree[x][0][0] == value) {
                 return x;
             }
         }
         return -1;
     }
+
     public void setNode(int value) {
         tree[length][0][0] = value;
         length++;
     }
-    public void setDistance(int position,int value){
-        tree[position][0][1]=value;
+
+    public void setDistance(int position, int value) {
+        tree[position][0][1] = value;
     }
+
     public void setEdge(int nodea, int nodeb) {
         int a;
         for (a = 0; tree[nodea][a][0] != 0; a++) {
         }
-        tree[nodea][a][0]=nodeb;
-        tree[nodea][a][1]=1;
+        tree[nodea][a][0] = nodeb;
+        tree[nodea][a][1] = 1;
         for (a = 0; tree[nodeb][a][0] != 0; a++) {
         }
         tree[nodeb][a][0] = nodea;
-        tree[nodeb][a][1]= 2;
+        tree[nodeb][a][1] = 2;
     }
     //1 is true
     //2 is false
