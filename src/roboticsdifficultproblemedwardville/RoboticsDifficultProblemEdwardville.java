@@ -8,7 +8,11 @@ public class RoboticsDifficultProblemEdwardville {
     public static void main(String[] args) throws FileNotFoundException {
         int trains[][] = input();
     }
-    public static void binarytree(){
+    public static void binarytree(int trainfile[][]){
+        BinaryTree file = new BinaryTree(trainfile[0].length,trainfile.length);
+        file.setNode(0,0);
+    }
+    public static void binarysearch(){
         
     }
     public static int[][] input() throws FileNotFoundException {
@@ -27,7 +31,6 @@ public class RoboticsDifficultProblemEdwardville {
         }
         return file;
     }
-
 }
 //    public static double[][] efficiency(int[][] trains) {
 //        int x = 0;
