@@ -19,10 +19,23 @@ public class BinaryTree {
         tree = new int[numberofnodes][numberofedges][2];
     }
 
-    public void setNode(int position, int value) {
+    public void setValue(int position, int value) {
         tree[position][0][0] = value;
     }
-
+    public int getValue(int position){
+        return tree[position][0][0];
+    }
+    public int getDistance(int position){
+        return tree[position][0][1];
+    }
+    public int findPosition(int value){
+        for(int x = 0;x<tree.length;x++){
+            if(tree[x][0][0]==value){
+                return x;
+            }
+        }
+        return -1;
+    }
     public void setNode(int value) {
         tree[length][0][0] = value;
         length++;
