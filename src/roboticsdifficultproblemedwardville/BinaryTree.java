@@ -39,7 +39,14 @@ public class BinaryTree {
         }
         return -1;
     }
-
+    public int findDistance(int distance){
+        for (int x = 0; x < tree.length; x++) {
+            if (tree[x][0][1] == distance) {
+                return x;
+            }
+        }
+        return -1;
+    }
     public void setNode(int value) {
         tree[length][0][0] = value;
         length++;
