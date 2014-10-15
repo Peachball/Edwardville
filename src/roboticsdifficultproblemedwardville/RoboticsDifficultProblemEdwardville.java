@@ -14,8 +14,11 @@ public class RoboticsDifficultProblemEdwardville {
         int[][][] buffer = converter(trainfile);
         BinaryTree file = new BinaryTree(buffer[0][0].length, buffer[0].length);
         file.setNode(0);
+        file.setDistance(0,0);
+        for(int a =0;;){
         for (int counter = 0; counter < trainfile.length; counter++) {
             
+        }
         }
     }
 

@@ -13,19 +13,30 @@ public class BinaryTree {
 
     private int tree[][][];
     private int values[];
-    private int distances[];
+    private int distances[][];
+    private int distancecounter[];
     public int length = 0;
     public int y = 0;
 
     //number of edges refers to the number of connections a node can have
     public BinaryTree(int numberofnodes, int numberofedges) {
+        length = 0;
         tree = new int[numberofnodes][numberofedges][2];
     }
 
     public BinaryTree(int numberofnodes, int numberofedges, int maxvalue, int maxdistance) {
+        length = 0;
         tree = new int[numberofnodes][numberofedges][2];
         values = new int[maxvalue];
-        distances = new int[maxdistance];
+        distances = new int[maxdistance][numberofedges];
+        distancecounter = new int[maxdistance];
+    }
+
+    public BinaryTree(int numberofnodes, int numberofedges, int maxdistance) {
+        length = 0;
+        tree = new int[numberofnodes][numberofedges][2];
+        distances = new int[maxdistance][numberofnodes];
+        distancecounter = new int[maxdistance];
     }
 
     public void setValue(int position, int value) {
@@ -48,7 +59,10 @@ public class BinaryTree {
 //        }
 //        return -1;
 //    }
-    public int findDistance(int distance) {
+    public int findPosition(int distance) {
+        if (distances[distance][0] != 0) {
+            return distances[distance][0];
+        }
         for (int x = 0; x < tree.length; x++) {
             if (tree[x][0][1] == distance) {
                 return x;
@@ -65,20 +79,21 @@ public class BinaryTree {
 
     public void setDistance(int position, int value) {
         tree[position][0][1] = value;
-        distances[position] = value;
+        distances[value][distancecounter[position]] = position;
+        distancecounter[position]++;
     }
 
-    public void setEdge(int nodea, int nodeb) {
+    public void setEdge(int nodea, int nodeb, int cost) {
         int a;
         for (a = 0; tree[nodea][a][0] != 0; a++) {
         }
         tree[nodea][a][0] = nodeb;
-        tree[nodea][a][1] = 1;
+        tree[nodea][a][1] = cost;
         for (a = 0; tree[nodeb][a][0] != 0; a++) {
         }
         tree[nodeb][a][0] = nodea;
-        tree[nodeb][a][1] = 2;
+        tree[nodeb][a][1] = -cost;
     }
-    //1 is true
-    //2 is false
+    //positive is true
+    //negative is false
 }
