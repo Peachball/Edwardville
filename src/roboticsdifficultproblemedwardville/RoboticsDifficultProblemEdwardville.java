@@ -9,22 +9,25 @@ public class RoboticsDifficultProblemEdwardville {
         int trains[][] = input();
         binarytree(trains);
     }
-    public static void binarytree(int trainfile[][]){
-        BinaryTree file = new BinaryTree(trainfile[0].length,trainfile.length);
+
+    public static void binarytree(int trainfile[][]) {
+        BinaryTree file = new BinaryTree(trainfile[0].length, trainfile.length);
         file.setNode(0);
-        for(int counter = 0;counter<trainfile.length;counter++){
-            
+        for (int counter = 0; counter < trainfile.length; counter++) {
+
         }
     }
-    public static int[][] converter(int trainfile[][]){
-        int file[][] = new int[trainfile.length/2][trainfile.length];
-        for(int a = 0;a<file.length;a++){
-            for(int b=0;trainfile[a][b]!=0;b++){
-                file[a*2][trainfile[a][b]]=trainfile[a+1][b];
+
+    public static int[][] converter(int trainfile[][]) {
+        int file[][] = new int[trainfile.length / 2][trainfile.length];
+        for (int a = 0; a < file.length; a++) {
+            for (int b = 0; trainfile[a][b] != 0; b++) {
+                file[a * 2][trainfile[a][b]] = trainfile[a + 1][b];
             }
         }
         return file;
     }
+
     public static int[][] input() throws FileNotFoundException {
         Scanner reader = new Scanner(System.in);
         int x;
@@ -33,9 +36,9 @@ public class RoboticsDifficultProblemEdwardville {
         x = reader.nextInt(); //x is number of train lines
         y = reader.nextInt(); //y is the total distance
         int file[][] = new int[2 * x][y];
-        for ( x = 0; x < file.length; x++) {
-            z=reader.nextInt();
-            for(y=0;y<z;y++){
+        for (x = 0; x < file.length; x++) {
+            z = reader.nextInt();
+            for (y = 0; y < z; y++) {
                 file[x][y] = reader.nextInt();
             }
         }

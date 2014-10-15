@@ -16,15 +16,18 @@ public class BinaryTree {
     private int distances[];
     public int length = 0;
     public int y = 0;
- //number of edges refers to the number of connections a node can have
-    public BinaryTree(int numberofnodes, int numberofedges){
+
+    //number of edges refers to the number of connections a node can have
+    public BinaryTree(int numberofnodes, int numberofedges) {
         tree = new int[numberofnodes][numberofedges][2];
     }
-    public BinaryTree(int numberofnodes, int numberofedges, int maxvalue, int maxdistance){
+
+    public BinaryTree(int numberofnodes, int numberofedges, int maxvalue, int maxdistance) {
         tree = new int[numberofnodes][numberofedges][2];
         values = new int[maxvalue];
         distances = new int[maxdistance];
     }
+
     public void setValue(int position, int value) {
         tree[position][0][0] = value;
     }
@@ -45,7 +48,7 @@ public class BinaryTree {
 //        }
 //        return -1;
 //    }
-    public int findDistance(int distance){
+    public int findDistance(int distance) {
         for (int x = 0; x < tree.length; x++) {
             if (tree[x][0][1] == distance) {
                 return x;
@@ -53,9 +56,10 @@ public class BinaryTree {
         }
         return -1;
     }
+
     public void setNode(int value) {
         tree[length][0][0] = value;
-        values[length]=value;
+        values[length] = value;
         length++;
     }
 
