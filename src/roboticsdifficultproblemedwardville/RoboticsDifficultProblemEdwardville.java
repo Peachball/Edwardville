@@ -16,9 +16,6 @@ public class RoboticsDifficultProblemEdwardville {
             
         }
     }
-    public static void binarysearch(){
-        
-    }
     public static int[][] converter(int trainfile[][]){
         int file[][] = new int[trainfile.length/2][trainfile.length];
         for(int a = 0;a<file.length;a++){
