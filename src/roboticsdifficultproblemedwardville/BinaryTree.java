@@ -12,13 +12,19 @@ package roboticsdifficultproblemedwardville;
 public class BinaryTree {
 
     private int tree[][][];
+    private int values[];
+    private int distances[];
     public int length = 0;
     public int y = 0;
-
-    public BinaryTree(int numberofnodes, int numberofedges) { //number of edges refers to the number of connections a node can have
+ //number of edges refers to the number of connections a node can have
+    public BinaryTree(int numberofnodes, int numberofedges){
         tree = new int[numberofnodes][numberofedges][2];
     }
-
+    public BinaryTree(int numberofnodes, int numberofedges, int maxvalue, int maxdistance){
+        tree = new int[numberofnodes][numberofedges][2];
+        values = new int[maxvalue];
+        distances = new int[maxdistance];
+    }
     public void setValue(int position, int value) {
         tree[position][0][0] = value;
     }
@@ -31,14 +37,14 @@ public class BinaryTree {
         return tree[position][0][1];
     }
 
-    public int findPosition(int value) {
-        for (int x = 0; x < tree.length; x++) {
-            if (tree[x][0][0] == value) {
-                return x;
-            }
-        }
-        return -1;
-    }
+//    public int findPosition(int value) {
+//        for (int x = 0; x < tree.length; x++) {
+//            if (tree[x][0][0] == value) {
+//                return x;
+//            }
+//        }
+//        return -1;
+//    }
     public int findDistance(int distance){
         for (int x = 0; x < tree.length; x++) {
             if (tree[x][0][1] == distance) {
@@ -49,11 +55,13 @@ public class BinaryTree {
     }
     public void setNode(int value) {
         tree[length][0][0] = value;
+        values[length]=value;
         length++;
     }
 
     public void setDistance(int position, int value) {
         tree[position][0][1] = value;
+        distances[position] = value;
     }
 
     public void setEdge(int nodea, int nodeb) {
