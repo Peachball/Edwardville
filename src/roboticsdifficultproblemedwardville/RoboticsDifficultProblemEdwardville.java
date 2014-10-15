@@ -11,21 +11,29 @@ public class RoboticsDifficultProblemEdwardville {
     }
 
     public static void binarytree(int trainfile[][]) {
-        BinaryTree file = new BinaryTree(trainfile[0].length, trainfile.length);
+        int[][][] buffer = converter(trainfile);
+        BinaryTree file = new BinaryTree(buffer[0][0].length, buffer[0].length);
         file.setNode(0);
         for (int counter = 0; counter < trainfile.length; counter++) {
-
+            
         }
     }
 
-    public static int[][] converter(int trainfile[][]) {
-        int file[][] = new int[trainfile.length / 2][trainfile.length];
+    public static int[][][] converter(int trainfile[][]) {
+        int file[][][] = new int[2][trainfile.length / 2][trainfile.length];
         for (int a = 0; a < file.length; a++) {
+            int buffer = 0;
             for (int b = 0; trainfile[a][b] != 0; b++) {
-                file[a * 2][trainfile[a][b]] = trainfile[a + 1][b];
+                file[0][a][trainfile[a][b]] = trainfile[a * 2 + 1][b];
+                if (b!=0) {
+                    file[1][a][trainfile[a][buffer]] = b;
+                }
+                buffer = b;
             }
         }
         return file;
+        // the 0 part of the array is the distance+train section
+        //the 1 part is the part to help search
     }
 
     public static int[][] input() throws FileNotFoundException {
