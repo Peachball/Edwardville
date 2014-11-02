@@ -24,13 +24,14 @@ public class RoboticsDifficultProblemEdwardville {
             sorter = new int[file.findnumEdges(y)];
             while (x < file.findnumEdges(y)) {
                 if (file.edgeDirection(y, x)) {
-                    sorter[x] = file.findEdgeValue(y, x) + cheapest[file.findEdgeConnection(y, x)];
+                    sorter[x] = file.findEdgeValue(y, x) + 
+                            cheapest[file.findEdgeConnection(y, x)];
                 }
                 x++;
             }
             if (file.findnumEdges(y) > 0) {
                 Arrays.sort(sorter);
-                if (sorter[0] == 0) {
+                if (sorter[0] == 0&&sorter.length>1) {
                     cheapest[y] = sorter[1];
                 } else {
                     cheapest[y] = sorter[0];

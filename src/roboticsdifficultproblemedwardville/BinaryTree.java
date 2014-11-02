@@ -40,7 +40,7 @@ public class BinaryTree {
 
     //Edge num should be from 0 to the number of nodes - 1
     public int findEdgeConnection(int position, int edgenum) {
-        return tree[position][edgenum + 1][0];
+        return tree[position][edgenum ][0];
     }
 
     public int findEdgeValue(int position, int edgenum) {
@@ -52,7 +52,7 @@ public class BinaryTree {
     }
 
     public boolean edgeDirection(int position, int edgenum) {
-        if (tree[position][edgenum + 1][1] < 0) {
+        if (tree[position][edgenum][1] < 0) {
             return false;
         } else {
             return true;
@@ -94,12 +94,12 @@ public class BinaryTree {
         }
         tree[nodea][a][0] = nodeb; //0 is which other node it is connected to
         tree[nodea][a][1] = cost;  //1 is the cost of the train to get to the other node
-        numEdges[nodea] = a;
-        for (a = 0; tree[nodeb][a][0] != 0; a++) {
-        }
-        tree[nodeb][a][0] = nodea;
-        tree[nodeb][a][1] = -cost;
-        numEdges[nodeb] = a;
+        numEdges[nodea] = a+1;
+//        for (a = 0; tree[nodeb][a][0] != 0; a++) {
+//        }
+//        tree[nodeb][a][0] = nodea;
+//        tree[nodeb][a][1] = -cost;
+//        numEdges[nodeb] = a+1;
         return true;
     }
 
