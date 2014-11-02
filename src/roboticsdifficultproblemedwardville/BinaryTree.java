@@ -12,24 +12,16 @@ public class BinaryTree {
 
     //number of edges refers to the number of connections a node can have
     public BinaryTree(int numberofnodes, int numberofedges) {
-        length = 0;
-        tree = new int[numberofnodes][numberofedges][2];
+        length = numberofnodes;
+        tree = new int[numberofnodes][numberofedges * 2][2];
         numEdges = new int[numberofnodes];
     }
 
     public BinaryTree(int numberofnodes, int numberofedges, int maxvalue, int maxdistance) {
-        length = 0;
-        tree = new int[numberofnodes][numberofedges][2];
+        length = numberofnodes;
+        tree = new int[numberofnodes][numberofedges * 2][2];
         values = new int[maxvalue];
         distances = new int[maxdistance][numberofedges];
-        distancecounter = new int[maxdistance];
-        numEdges = new int[numberofnodes];
-    }
-
-    public BinaryTree(int numberofnodes, int numberofedges, int maxdistance) {
-        length = 0;
-        tree = new int[numberofnodes][numberofedges][2];
-        distances = new int[maxdistance][numberofnodes];
         distancecounter = new int[maxdistance];
         numEdges = new int[numberofnodes];
     }
@@ -53,9 +45,9 @@ public class BinaryTree {
 
     public int findEdgeValue(int position, int edgenum) {
         if (tree[position][edgenum][1] < 0) {
-            return -tree[position][edgenum + 1][1];
+            return -tree[position][edgenum][1];
         } else {
-            return tree[position][edgenum + 1][1];
+            return tree[position][edgenum][1];
         }
     }
 
@@ -96,12 +88,9 @@ public class BinaryTree {
 //        length++;
 //    }
 
-    public void setEdge(int nodea, int nodeb, int cost) {
+    public boolean setEdge(int nodea, int nodeb, int cost) {
         int a;
         for (a = 0; tree[nodea][a][0] != 0; a++) {
-            if(!(tree[nodea].length>a)){
-                
-            }
         }
         tree[nodea][a][0] = nodeb; //0 is which other node it is connected to
         tree[nodea][a][1] = cost;  //1 is the cost of the train to get to the other node
@@ -111,6 +100,7 @@ public class BinaryTree {
         tree[nodeb][a][0] = nodea;
         tree[nodeb][a][1] = -cost;
         numEdges[nodeb] = a;
+        return true;
     }
 
     public int findnumEdges(int node) {
