@@ -3,8 +3,6 @@ package roboticsdifficultproblemedwardville;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
-
-
 import java.util.Scanner;
 
 public class RoboticsDifficultProblemEdwardville {
@@ -19,14 +17,14 @@ public class RoboticsDifficultProblemEdwardville {
     public int treeSolver(BinaryTree file, int position) {
         int costs[] = new int[file.findnumEdges(position)];
         int cheapest;
-        if(file.findnumEdges(position)==0){
+        if (file.findnumEdges(position) == 0) {
             return file.findEdgeValue(position, 0);
         }
         for (int x = 0; x < file.findnumEdges(position); x++) {
-            if(file.edgeDirection(position, x)&&file.findEdgeConnection(position, x)!=file.numberOfNodes()){
-                costs[x]=treeSolver(file,file.findEdgeConnection(position, x));
-            } else{
-                costs[x]=file.findEdgeValue(position,x);
+            if (file.edgeDirection(position, x) && file.findEdgeConnection(position, x) != file.numberOfNodes()) {
+                costs[x] = treeSolver(file, file.findEdgeConnection(position, x));
+            } else {
+                costs[x] = file.findEdgeValue(position, x);
             }
         }
         Arrays.sort(costs);
@@ -43,7 +41,8 @@ public class RoboticsDifficultProblemEdwardville {
         for (int a = 0; a < trainfile.length / 2; a++) {
             for (int counter = 0; counter < trainfile[0].length
                     && trainfile[a * 2][counter + 1] != 0; counter++) {
-                file.setEdge(trainfile[a * 2][counter], trainfile[a * 2][counter + 1], trainfile[a * 2 + 1][counter]);
+                file.setEdge(trainfile[a * 2][counter], trainfile[a * 2][counter + 1], 
+                        trainfile[a * 2 + 1][counter]);
             }
         }
         return file;

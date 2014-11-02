@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package roboticsdifficultproblemedwardville;
 
-/**
- *
- * @author chen
- */
 public class BinaryTree {
 
     private int tree[][][];
@@ -23,6 +14,7 @@ public class BinaryTree {
     public BinaryTree(int numberofnodes, int numberofedges) {
         length = 0;
         tree = new int[numberofnodes][numberofedges][2];
+        numEdges = new int[numberofnodes];
     }
 
     public BinaryTree(int numberofnodes, int numberofedges, int maxvalue, int maxdistance) {
@@ -31,6 +23,7 @@ public class BinaryTree {
         values = new int[maxvalue];
         distances = new int[maxdistance][numberofedges];
         distancecounter = new int[maxdistance];
+        numEdges = new int[numberofnodes];
     }
 
     public BinaryTree(int numberofnodes, int numberofedges, int maxdistance) {
@@ -38,13 +31,14 @@ public class BinaryTree {
         tree = new int[numberofnodes][numberofedges][2];
         distances = new int[maxdistance][numberofnodes];
         distancecounter = new int[maxdistance];
+        numEdges = new int[numberofnodes];
     }
 
     public void setValue(int position, int value) {
         tree[position][0][0] = value;
     }
-    
-    public int numberOfNodes(){
+
+    public int numberOfNodes() {
         return tree.length;
     }
 
@@ -53,7 +47,6 @@ public class BinaryTree {
     }
 
     //Edge num should be from 0 to the number of nodes - 1
-
     public int findEdgeConnection(int position, int edgenum) {
         return tree[position][edgenum + 1][0];
     }
@@ -106,6 +99,9 @@ public class BinaryTree {
     public void setEdge(int nodea, int nodeb, int cost) {
         int a;
         for (a = 0; tree[nodea][a][0] != 0; a++) {
+            if(!(tree[nodea].length>a)){
+                
+            }
         }
         tree[nodea][a][0] = nodeb; //0 is which other node it is connected to
         tree[nodea][a][1] = cost;  //1 is the cost of the train to get to the other node
